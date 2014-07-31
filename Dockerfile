@@ -2,8 +2,7 @@ FROM ubuntu:14.04
 MAINTAINER Daniel Watkins <daniel@daniel-watkins.co.uk>
 
 RUN apt-get update
-RUN apt-get install -y python-pip
-RUN apt-get install -y python-dev
+RUN apt-get install -y python-pip python-dev
 RUN pip install klaus
 
 EXPOSE 8080
