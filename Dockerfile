@@ -2,7 +2,7 @@ FROM ubuntu:14.04
 MAINTAINER Daniel Watkins <daniel@daniel-watkins.co.uk>
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y -q \
-    python-pip python-dev python-virtualenv
+    python-pip python-dev python-virtualenv git
 
 # see https://docs.docker.com/engine/reference/commandline/build/#set-build-time-variables-build-arg
 # see https://github.com/docker/docker/issues/7198#issuecomment-159736577
