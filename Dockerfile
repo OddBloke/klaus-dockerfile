@@ -3,7 +3,7 @@ MAINTAINER Daniel Watkins <daniel@daniel-watkins.co.uk>
 
 RUN apt-get update
 RUN apt-get install -y python-pip python-dev
-RUN pip install klaus
+RUN pip install klaus markdown docutils
 
 EXPOSE 8080
 
