@@ -15,8 +15,13 @@ RUN useradd --system --home-dir /opt/klaus --create-home $USERADD_ARGS klaus
 USER klaus
 
 RUN virtualenv /opt/klaus/venv
-RUN /opt/klaus/venv/bin/pip install klaus markdown docutils
+RUN /opt/klaus/venv/bin/pip install klaus markdown docutils uwsgi
 
 EXPOSE 8080
 
-CMD ["/bin/bash", "-c", "/opt/klaus/venv/bin/klaus --host 0.0.0.0 /srv/git/*"]
+VOLUME /srv/git
+
+ENV KLAUS_REPOS_ROOT /srv/git/
+ENV KLAUS_SITE_NAME "oddbloke/klaus-dockerfile image"
+
+CMD /opt/klaus/venv/bin/uwsgi -w klaus.contrib.wsgi_autoreload --http 0.0.0.0:8080 --processes 4 --threads 2
